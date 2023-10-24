@@ -1,9 +1,10 @@
-// vite.config.js
+import { defineConfig } from 'vite';
 
-export default {
-    build: {
-      // Set the chunk size warning limit (in bytes)
-      chunkSizeWarningLimit: 1000, // Adjust as needed
-    },
-  };
-  
+export default defineConfig({
+  base: '/vite-test-2/',
+  resolve: {
+    alias: {
+      '@': '/src'
+    }
+  },
+});
