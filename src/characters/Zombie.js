@@ -1,4 +1,5 @@
-import Phaser from 'phaser';
+import * as Phaser from 'phaser';
+
 
 export default class Zombie extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y) {

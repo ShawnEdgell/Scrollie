@@ -1,19 +1,23 @@
-import Phaser from 'phaser';
-import BootScene from './scenes/BootScene.js';
+import * as Phaser from 'phaser';
+import BootScene from './scenes/BootScene.js'; // BootScene import
 import GameScene from './scenes/GameScene.js';
 
 const config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
-    scene: [BootScene, GameScene],
+    scale: {
+        mode: Phaser.Scale.RESIZE,
+        parent: 'phaser-game',
+        width: '100%',
+        height: '100%',
+    },
+    scene: [BootScene, GameScene], // Add BootScene to the scenes array
     physics: {
         default: 'arcade',
         arcade: {
-            debug: false
-        }
-    }
+            gravity: { y: 300 },
+            debug: false,
+        },
+    },
 };
-
 
 const game = new Phaser.Game(config);

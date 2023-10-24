@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Game Title</title>
+    <title>My Phaser Game</title>
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            min-height: 100vh; /* Ensure full viewport height */
+            background-color: #000; /* Set background color */
+        }
+
+        #phaser-game {
+            /* Set the dimensions of your game window */
+            width: 800px;
+            height: 600px;
+            background-color: #fff; /* Set background color for the game area */
+        }
+    </style>
 </head>
 <body>
+    <div id="phaser-game"></div>
+
+    <!-- Your game scripts go here -->
     <script type="module" src="/src/main.js"></script>
 </body>
 </html>
