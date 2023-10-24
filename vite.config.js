@@ -7,4 +7,10 @@ export default defineConfig({
       '@': '/src'
     }
   },
+  build: {
+    target: 'esnext', 
+    outDir: 'dist', 
+    minify: 'terser',
+    sourcemap: true
+  },
 });
