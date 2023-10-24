@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/vite-test-2/',
+  base: '/Scrollie/',
   resolve: {
     alias: {
       '@': '/src'
