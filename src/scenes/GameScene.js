@@ -19,27 +19,29 @@ export default class GameScene extends Phaser.Scene {
 
         // Display assets
         this.add.image(400, 300, 'background');
-        
+
         // Create and enable physics for Adventurer
         this.adventurer = new Adventurer(this, 200, 300);
-        this.physics.world.enable(this.adventurer);
-        this.adventurer.setCollideWorldBounds(true);
-        
+
         // Create and enable physics for Zombie
         this.zombie = new Zombie(this, 600, 300);
-        this.physics.world.enable(this.zombie); 
-        this.zombie.setCollideWorldBounds(true);
 
         // Set up custom movement keys
         this.customControls = this.input.keyboard.addKeys({
             left: Phaser.Input.Keyboard.KeyCodes.A,
             right: Phaser.Input.Keyboard.KeyCodes.D,
-            jump: Phaser.Input.Keyboard.KeyCodes.W,
+            jump: Phaser.Input.Keyboard.KeyCodes.SPACE, // Use "W" for jump
         });
     }
 
     update() {
-        // Player movement (Adventurer)
+        // Debugging statements
+        if (this.customControls.jump.isDown !== this.prevJumpState) {
+            console.log('Jump key is down:', this.customControls.jump.isDown);
+            this.prevJumpState = this.customControls.jump.isDown;
+        }
+
+        // Player movement
         if (this.customControls.left.isDown) {
             this.adventurer.setVelocityX(-160);
         } else if (this.customControls.right.isDown) {
@@ -47,12 +49,10 @@ export default class GameScene extends Phaser.Scene {
         } else {
             this.adventurer.setVelocityX(0);
         }
-    
-        // Player jumping (Adventurer)
-        if (this.customControls.jump.isDown && this.adventurer.body.touching.down) {
-            this.adventurer.setVelocityY(-330);
-        }
 
-        // You can add similar movement and controls for the Zombie here if needed.
+        // Player jumping when "W" key is pressed
+        if (this.customControls.jump.isDown && this.adventurer.body.onFloor()) {
+            this.adventurer.jump();
+        }
     }
 }
